@@ -6,11 +6,13 @@ variable "domain_name" {
 variable "route53_zone_id" {
   description = "The ID of the hosted zone to contain the domain validation records.  Only used if the validation method is set to \"DNS\"."
   type        = string
+  default     = null
 }
 
 variable "subject_alternative_names" {
   type        = list(string)
   description = "Set of domains that should be SANs in the issued certificate."
+  default     = null
 }
 
 variable "tags" {

@@ -59,8 +59,8 @@ This project constitutes a work of the United States Government and is not subje
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | domain\_name | A domain name for which the certificate should be issued. | `string` | n/a | yes |
-| route53\_zone\_id | The ID of the hosted zone to contain the domain validation records.  Only used if the validation method is set to "DNS". | `string` | n/a | yes |
-| subject\_alternative\_names | Set of domains that should be SANs in the issued certificate. | `list(string)` | n/a | yes |
+| route53\_zone\_id | The ID of the hosted zone to contain the domain validation records.  Only used if the validation method is set to "DNS". | `string` | `null` | no |
+| subject\_alternative\_names | Set of domains that should be SANs in the issued certificate. | `list(string)` | `null` | no |
 | tags | Tags to apply to the ACM certificate. | `map(string)` | `{}` | no |
 | validation\_method | Which method to use for validation. DNS or EMAIL are valid, NONE can be used for certificates that were imported into ACM and then into Terraform. | `string` | `"NONE"` | no |
 
