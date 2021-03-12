@@ -1,3 +1,4 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Usage
 
 Creates an AWS ACM certificate and validates using Route53.
@@ -46,13 +47,25 @@ This project constitutes a work of the United States Government and is not subje
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13 |
-| aws | >= 3.0.0 |
+| aws | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 3.0.0 |
+| aws | ~> 3.0 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_acm_certificate](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) |
+| [aws_acm_certificate_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) |
+| [aws_route53_record](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) |
 
 ## Inputs
 
@@ -71,4 +84,4 @@ This project constitutes a work of the United States Government and is not subje
 | arn | The ARN of the certificate. |
 | domain\_validation\_options | Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g. if SANs are defined. Only set if DNS-validation was used. |
 | validation\_emails | A list of addresses that received a validation E-Mail. Only set if EMAIL-validation was used. |
-
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
