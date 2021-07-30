@@ -23,7 +23,7 @@ resource "aws_route53_zone" "main" {
 module "acm_certificate" {
   source = "../../"
 
-  route53_zone_id           = aws_route53_zone.zone_id
+  route53_zone_id           = aws_route53_zone.main.zone_id
   domain_name               = var.domain_name
   subject_alternative_names = [format("www.%s", var.domain_name)]
   validation_method         = "DNS"
