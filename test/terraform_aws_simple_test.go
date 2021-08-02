@@ -25,9 +25,11 @@ func TestTerraformSimpleExample(t *testing.T) {
 	t.Parallel()
 
 	region := os.Getenv("AWS_DEFAULT_REGION")
+	domainName := os.Getenv("DOMAIN_NAME")
 
 	// If AWS_DEFAULT_REGION environment variable is not set, then fail the test.
 	require.NotEmpty(t, region, "missing environment variable AWS_DEFAULT_REGION")
+	require.NotEmpty(t, domainName, "missing environment variable DOMAIN_NAME")
 
 	// Append a random suffix to the test name, so individual test runs are unique.
 	// When the test runs again, it will use the existing terraform state,
@@ -47,7 +49,7 @@ func TestTerraformSimpleExample(t *testing.T) {
 		Vars: map[string]interface{}{
 			"test_name":   testName,
 			"tags":        tags,
-			"domain_name": "dds-infra-test.com",
+			"domain_name": domainName,
 		},
 		// Set the environment variables passed to terraform.
 		// AWS_DEFAULT_REGION is the only environment variable strictly required,
@@ -74,5 +76,5 @@ func TestTerraformSimpleExample(t *testing.T) {
 	// Test that the output is what is expected.
 	require.Equal(t, outputTestName, testName)
 	require.True(t, len(outputARN) > 0)
-	require.Equal(t, "", outputDomainValidationOptions)
+	require.True(t, len(outputDomainValidationOptions) > 0)
 }

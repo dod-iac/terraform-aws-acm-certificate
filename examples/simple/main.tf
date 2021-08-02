@@ -16,14 +16,14 @@ data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
 
-resource "aws_route53_zone" "main" {
+data "aws_route53_zone" "main" {
   name = var.domain_name
 }
 
 module "acm_certificate" {
   source = "../../"
 
-  route53_zone_id           = aws_route53_zone.main.zone_id
+  route53_zone_id           = data.aws_route53_zone.main.zone_id
   domain_name               = var.domain_name
   subject_alternative_names = [format("www.%s", var.domain_name)]
   validation_method         = "DNS"
